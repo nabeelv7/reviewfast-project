@@ -22,3 +22,8 @@
   options:
   - [ ] ?limit= (limit the amount of reviews that are fetched)
   - [ ] ?order= (ordet the reviews by time)
+
+---
+### Dashboard
+
+- [ ] 

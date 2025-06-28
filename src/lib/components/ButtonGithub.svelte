@@ -6,9 +6,11 @@
   async function signInWithGithub() {
     isLoading = true;
     await signIn("github", {
-      callbackUrl: "/dashboard",
+      callbackUrl: "/dashboard/general",
     });
+    // this is to show the loading spinner for some time
     await new Promise((resolve) => setTimeout(resolve, 2000));
+    isLoading = false;
   }
 </script>
 
