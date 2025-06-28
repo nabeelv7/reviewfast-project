@@ -1,3 +1,4 @@
+import { serial, varchar } from "drizzle-orm/mysql-core";
 import {
   boolean,
   timestamp,
@@ -89,3 +90,27 @@ export const authenticators = pgTable(
     },
   ]
 );
+
+// your schema here
+export const projects = pgTable("project", {
+  id: serial("id").primaryKey(),
+  userId: text("user_id")
+    .notNull()
+    .references(() => users.id, { onDelete: "cascade" }),
+  name: varchar("name", { length: 100 }).notNull(),
+  url: varchar("url", { length: 100 }).notNull(),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+  updatedAt: timestamp("updated_at").defaultNow().notNull(),
+});
+
+export const reviews = pgTable("review", {
+  id: serial("id").primaryKey(),
+  projectId: integer("project_id")
+    .notNull()
+    .references(() => projects.id, { onDelete: "cascade" }),
+  body: text("body").notNull(),
+  customerName: varchar("customer_name", { length: 100 }).notNull(),
+  customerJob: varchar("customer_job", { length: 100 }),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+  updatedAt: timestamp("updated_at").defaultNow().notNull(),
+});
