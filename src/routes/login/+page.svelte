@@ -1,5 +1,6 @@
 <script>
   import ButtonGithub from "$lib/components/ButtonGithub.svelte";
+  import IconStar from "$lib/components/IconStar.svelte";
 
   /** @type {{ data: import('./$types').PageData }} */
   let { data } = $props();
@@ -14,12 +15,8 @@
   >
     <!-- card start -->
     <div class="card threed border border-white/20 bg-base-200 p-5 flex flex-col gap-4 sm:max-w-sm w-full">
-      <div class="flex justify-center items-center gap-1">
-        <img
-          class="w-10 h-10"
-          src="/icon.png"
-          alt="logo of reviewfast website"
-        />
+      <div class="flex justify-center items-center gap-2">
+        <IconStar width={24}/>
         <h1 class="text-xl font-bold">ReviewFast</h1>
       </div>
       <ButtonGithub />
